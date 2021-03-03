@@ -1,0 +1,17 @@
+
+
+//map 
+$font-weights:(
+    "normal":400,
+    "medium":800,
+    "larger":bold
+);
+
+
+
+//we can pass the arguments too
+@mixin flexcontainer($direction) {
+    display: flex;
+    flex-direction:$direction ;
+    
+}

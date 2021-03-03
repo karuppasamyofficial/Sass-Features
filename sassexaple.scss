@@ -1,0 +1,73 @@
+@import "./_PartialFile";
+//we can import the other scss files here and if you create any file named start with _ it won't generated css convertion file
+@import "Test";
+// variable creation
+
+.saabackground {
+  background-color: $containerBackgroucolor;
+}
+
+body {
+  background-color: $backgroundcolor;
+}
+
+//write if else condition
+@mixin theme($themeboolean: true) {
+  @if$themeboolean {
+    background-color: green;
+  } @else {
+    background-color: indianred;
+  }
+}
+
+//media query
+@mixin mobileview() {
+  @media (max-width: 800px) {
+    @content;
+  }
+}
+
+.sccssmap {
+  font-weight: map-get($font-weights, medium);
+}
+
+//nested in scss
+//css code looks like the below
+// .scssnested scssnested_paragraph{
+//         font-weight: map-get($font-weights, normal);
+//     }
+.scssnested {
+  .submitbtn {
+    @include theme($themeboolean: true);
+    margin-right: 2px;
+
+    &:hover {
+      background-color: greenyellow;
+    }
+  }
+  .cancelbtn {
+    @include theme($themeboolean: false);
+
+    @extend .submitbtn;
+  }
+
+  .username {
+    color: blue;
+  }
+
+  .password {
+    color: blue;
+  }
+
+  @include flexcontainer(row);
+  // @include theme($themeboolean:true);
+  @include mobileview {
+    flex-direction: column;
+  }
+  //short cut we can define #{&} it will take before the paragraph what are text is available
+
+  //just extend paragraph 1 properties here
+}
+@function weight($weightname) {
+  @return map-get($font-weights, medium);
+}
